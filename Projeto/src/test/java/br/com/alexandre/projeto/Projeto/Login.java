@@ -75,7 +75,7 @@ public class Login {
 		// Clicar em type e selecionar phone
 		WebElement type = navegador.findElement(By.name("type"));
 		new org.openqa.selenium.support.ui.Select(type).selectByVisibleText("Phone");
-
+/*
 		// Digitar em contact
 		navegador.findElement(By.name("contact")).sendKeys("BAN.132");
 
@@ -86,7 +86,7 @@ public class Login {
 		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
 		String mensagem = mensagemPop.getText();
 		assertEquals("Your contact has been added!", mensagem);
-
+*/
 	}
 
 	//@Test
