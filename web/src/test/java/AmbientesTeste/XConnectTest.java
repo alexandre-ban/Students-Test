@@ -167,7 +167,6 @@ public class XConnectTest {
 				.findElement(By.xpath(
 						"//div[@class=\"river-post-types-tab\"]//a[@aria-controls=\"river_post_files_tab\"]/span"))
 				.click();
-
 	}
 
 	// @Test
@@ -179,7 +178,6 @@ public class XConnectTest {
 				.findElement(By.xpath(
 						"//div[@class=\"river-post-types-tab\"]//a[@aria-controls=\"river_post_photo_tab\"]/span"))
 				.click();
-
 	}
 
 	// @Test
