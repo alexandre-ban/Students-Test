@@ -22,7 +22,7 @@ public class ConnectTeste {
 
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoPost()
-		.publicarFoto();
+		.publicarVideo();
 	}
 
 	@After
