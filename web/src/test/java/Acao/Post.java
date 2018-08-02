@@ -100,7 +100,7 @@ public class Post extends ComandosPadrao {
 		WebElement tituloDoArquivo = navegador.findElement(By.name("post_file_title[]"));
 		tituloDoArquivo.sendKeys("teste 2");
 
-		upload("uploadFile");
+		upload(tipo);
 
 		Thread.sleep(1000);
 		WebElement FixarNoTopo = navegador.findElement(By.xpath(
@@ -148,20 +148,35 @@ public class Post extends ComandosPadrao {
 
 		return this;
 	}
-	
-	public Post publicarVideo () {
-		
+
+	public Post publicarVideo() throws InterruptedException {
+
 		String tipo = "uploadVideo";
-		
+
 		WebElement btnVideo = navegador.findElement(
 				By.xpath("//div[@class=\"river-post-types-tab\"]//a[@aria-controls=\"river_post_video_tab\"]/span"));
 		btnVideo.click();
-		
+
 		WebElement descricaoVideo = navegador
 				.findElement(By.xpath("//div[@id=\"river_post_video_tab\"]//div[@class=\"md-editor\"]//textarea"));
 		executor.executeScript("arguments[0].click();", descricaoVideo);
 		descricaoVideo.sendKeys("teste");
 		
+		Thread.sleep(1000);
+		WebElement FixarNoTopo = navegador.findElement(By.xpath(
+				"//div[@id=\"river_post_video_tab\"]//div[@class=\"col-sm-6\"]/div/label//input[@type=\"checkbox\" and @name = \"pin\"] "));
+		executor.executeScript("arguments[0].click();", FixarNoTopo);
+		
+		WebElement tituloVideo = navegador.findElement(By.name("post_video_title"));
+		tituloVideo.click();
+		tituloVideo.sendKeys("Teste");
+		
+		upload (tipo);
+		
+		navegador.findElement(By.name("upload")).click();
+		
+		validacao();
+
 		return this;
 	}
 
@@ -175,8 +190,10 @@ public class Post extends ComandosPadrao {
 
 			WebElement uploadArquivo = navegador.findElement(By.name("post_file[]"));
 			uploadArquivo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\Rolim.jpg");
-		} else { 
-			
+		} else {
+
+			WebElement uploadArquivo = navegador.findElement(By.name("post_video_file"));
+			uploadArquivo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\Rolim.jpg");
 		}
 
 	}
