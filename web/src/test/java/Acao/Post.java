@@ -183,17 +183,17 @@ public class Post extends ComandosPadrao {
 	public void upload(String tipo) {
 
 		if (tipo == "uploadFoto") {
-			WebElement uploadArquivo = navegador.findElement(By.name("post_photo_file[]"));
-			uploadArquivo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
+			WebElement upload = navegador.findElement(By.name("post_photo_file[]"));
+			upload.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
 
 		} else if (tipo == "uploadFile") {
 
-			WebElement uploadArquivo = navegador.findElement(By.name("post_file[]"));
-			uploadArquivo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\Rolim.jpg");
+			WebElement upload = navegador.findElement(By.name("post_file[]"));
+			upload.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\Rolim.jpg");
 		} else {
 
-			WebElement uploadArquivo = navegador.findElement(By.name("post_video_file"));
-			uploadArquivo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\Rolim.jpg");
+			WebElement upload = navegador.findElement(By.name("post_video_file"));
+			upload.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\video.mp4");
 		}
 
 	}
