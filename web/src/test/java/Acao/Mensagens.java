@@ -37,8 +37,9 @@ public class Mensagens extends ComandosPadrao {
 		return this;
 	}
 
-	public Mensagens criarMensagem() throws InterruptedException {
+	public Mensagens criarMensagem(String tipoEnvio) throws InterruptedException {
 
+		
 		Thread.sleep(1000);
 
 		// ESCREVER MENSAGENS
@@ -97,11 +98,35 @@ public class Mensagens extends ComandosPadrao {
 //						"//div[@class=\"form-group\"]//button[@class=\"btn btn-primary message-search-submit\"]"))
 //				.click();
 
+		tipoEnvio(tipoEnvio);
+
 		return this;
 	}
 
 	// ------------------------------------------------------------------------------------
 
+	public Mensagens tipoEnvio(String tipoEnvio) {
+
+		WebElement tipoMensagem = navegador.findElement(By.xpath(
+				"//div[@class=\"col-sm-6\"]//div[@class=\"btn-group bootstrap-select form-control\"]//button[@class=\"btn dropdown-toggle btn-default\"]"));
+		executor.executeScript("arguments[0].click();", tipoMensagem);
+
+		if (tipoEnvio == "mensagem") {
+			
+			//navegador.findElement(By.xpath("//div[@class=\"col-sm-6\"]//div[@class=\"form-group\"]//select//option[@value=\"1\"]"));
+			
+			WebElement Mensagem = navegador.findElement(By.xpath("//div[@class=\"col-sm-6\"]//div[@class=\"form-group\"]//select//option[@value=\"1\"]"));
+			executor.executeScript("arguments[0].click();", Mensagem);
+			
+		} else if (tipoEnvio == "notificação") {
+			
+		}
+
+		return this;
+	}	
+	
+	//-------------------------------------------------------------------------------------
+	
 	public Mensagens atualizar() throws InterruptedException {
 
 		// Clicar no botão atualizar
@@ -178,4 +203,6 @@ public class Mensagens extends ComandosPadrao {
 
 		return this;
 	}
+
+	
 }
