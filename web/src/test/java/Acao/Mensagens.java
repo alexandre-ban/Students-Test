@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import Suporte.ComandosPadrao;
 
@@ -39,7 +40,6 @@ public class Mensagens extends ComandosPadrao {
 
 	public Mensagens criarMensagem(String tipoEnvio) throws InterruptedException {
 
-		
 		Thread.sleep(1000);
 
 		// ESCREVER MENSAGENS
@@ -112,21 +112,17 @@ public class Mensagens extends ComandosPadrao {
 		executor.executeScript("arguments[0].click();", tipoMensagem);
 
 		if (tipoEnvio == "mensagem") {
-			
-			//navegador.findElement(By.xpath("//div[@class=\"col-sm-6\"]//div[@class=\"form-group\"]//select//option[@value=\"1\"]"));
-			
-			WebElement Mensagem = navegador.findElement(By.xpath("//div[@class=\"col-sm-6\"]//div[@class=\"form-group\"]//select//option[@value=\"1\"]"));
-			executor.executeScript("arguments[0].click();", Mensagem);
+
 			
 		} else if (tipoEnvio == "notificação") {
-			
+
 		}
 
 		return this;
-	}	
-	
-	//-------------------------------------------------------------------------------------
-	
+	}
+
+	// -------------------------------------------------------------------------------------
+
 	public Mensagens atualizar() throws InterruptedException {
 
 		// Clicar no botão atualizar
@@ -204,5 +200,4 @@ public class Mensagens extends ComandosPadrao {
 		return this;
 	}
 
-	
 }
