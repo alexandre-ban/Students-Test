@@ -30,7 +30,7 @@ public class ConnectTeste {
 		
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoMensagem()
-		.criarMensagem("notificação");
+		.criarMensagem("mensagem");
 	}
 
 	@After

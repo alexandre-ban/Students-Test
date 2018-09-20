@@ -2,6 +2,7 @@ package Acao;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -100,21 +101,64 @@ public class Mensagens extends ComandosPadrao {
 
 		tipoEnvio(tipoEnvio);
 
+		// navegador.findElement(By.xpath("//div[@class=\"text-right\"]//button[@data-action=\"send\"]")).click();
+
 		return this;
 	}
 
 	// ------------------------------------------------------------------------------------
 
-	public Mensagens tipoEnvio(String tipoEnvio) {
+	public Mensagens tipoEnvio(String tipoEnvio) throws InterruptedException {
+
+		WebElement SelecioneTipoDeMensagem = navegador.findElement(By.xpath(
+				"//div[@class=\"dropdown-menu open\"]//div[@class=\"bs-searchbox\"]/input[@class=\"form-control\"]"));
+
+		Thread.sleep(1000);
 
 		WebElement tipoMensagem = navegador.findElement(By.xpath(
 				"//div[@class=\"col-sm-6\"]//div[@class=\"btn-group bootstrap-select form-control\"]//button[@class=\"btn dropdown-toggle btn-default\"]"));
-		executor.executeScript("arguments[0].click();", tipoMensagem);
 
-		if (tipoEnvio == "mensagem") {
+		tipoMensagem.click();
+		Thread.sleep(1000);
 
-			
+		if (tipoEnvio == "autorização") {
+
+			SelecioneTipoDeMensagem.click();
+			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
+			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+
 		} else if (tipoEnvio == "notificação") {
+
+			SelecioneTipoDeMensagem.click();
+			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
+			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+
+		} else if (tipoEnvio == "mensagem") {
+
+			SelecioneTipoDeMensagem.click();
+			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
+			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+
+			WebElement assunto = navegador.findElement(By.name("subject"));
+			assunto.click();
+			assunto.sendKeys("Brasil");
+
+			WebElement conteudo = navegador.findElement(By.id("cke_1_contents"));
+			conteudo.click();
+			conteudo.sendKeys(
+					"A História do Brasil começa com a chegada dos primeiros humanos no continente americano há mais de 8.000 anos.");
+
+		} else if (tipoEnvio == "convite") {
+
+			SelecioneTipoDeMensagem.click();
+			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
+			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+
+		} else if (tipoEnvio == "enquete") {
+
+			SelecioneTipoDeMensagem.click();
+			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
+			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
 
 		}
 
