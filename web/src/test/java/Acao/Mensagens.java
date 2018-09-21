@@ -76,28 +76,32 @@ public class Mensagens extends ComandosPadrao {
 		// CÓPIA OULTA NÃO FUNCIONA
 		// selecionar cópia oculta
 
-//		WebElement copiaOculta = navegador.findElement(By.name("message-add-bcc-recipients"));
-//		executor.executeScript("arguments[0].click();", copiaOculta);
-//
-//		navegador
-//				.findElement(By
-//						.xpath("//div[@class=\"btn-group bootstrap-select show-tick form-control container-select\"]"))
-//				.click();
-//		navegador.findElement(By.linkText("ANGLO ARARAS")).click();
-//
-//		navegador.findElement(By.id("modal-message-search-remodal-content")).click();
-//
-//		navegador.findElement(By.xpath(
-//				"//div[@class=\"form-group\"]/div[@class=\"btn-group bootstrap-select show-tick form-control role-select\"]"))
-//				.click();
-//		navegador.findElement(By.linkText("Diretor")).click();
-//
-//		navegador.findElement(By.id("modal-message-search-remodal-content")).click();
-//
-//		navegador
-//				.findElement(By.xpath(
-//						"//div[@class=\"form-group\"]//button[@class=\"btn btn-primary message-search-submit\"]"))
-//				.click();
+		// WebElement copiaOculta =
+		// navegador.findElement(By.name("message-add-bcc-recipients"));
+		// executor.executeScript("arguments[0].click();", copiaOculta);
+		//
+		// navegador
+		// .findElement(By
+		// .xpath("//div[@class=\"btn-group bootstrap-select show-tick form-control
+		// container-select\"]"))
+		// .click();
+		// navegador.findElement(By.linkText("ANGLO ARARAS")).click();
+		//
+		// navegador.findElement(By.id("modal-message-search-remodal-content")).click();
+		//
+		// navegador.findElement(By.xpath(
+		// "//div[@class=\"form-group\"]/div[@class=\"btn-group bootstrap-select
+		// show-tick form-control role-select\"]"))
+		// .click();
+		// navegador.findElement(By.linkText("Diretor")).click();
+		//
+		// navegador.findElement(By.id("modal-message-search-remodal-content")).click();
+		//
+		// navegador
+		// .findElement(By.xpath(
+		// "//div[@class=\"form-group\"]//button[@class=\"btn btn-primary
+		// message-search-submit\"]"))
+		// .click();
 
 		tipoEnvio(tipoEnvio);
 
@@ -127,11 +131,33 @@ public class Mensagens extends ComandosPadrao {
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
 
+			WebElement data = navegador.findElement(By.name("validity"));
+			data.click();
+			data.clear();
+			data.sendKeys("31/12/2018");
+
+			WebElement assunto = navegador.findElement(By.name("subject"));
+			assunto.click();
+			assunto.sendKeys("Excursão");
+
+			// Escrever texto
+
 		} else if (tipoEnvio == "notificação") {
 
 			SelecioneTipoDeMensagem.click();
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+
+			WebElement data = navegador.findElement(By.name("validity"));
+			data.click();
+			data.clear();
+			data.sendKeys("31/12/2018");
+
+			WebElement assunto = navegador.findElement(By.name("subject"));
+			assunto.click();
+			assunto.sendKeys("Feriado");
+
+			// Escrever texto
 
 		} else if (tipoEnvio == "mensagem") {
 
@@ -143,8 +169,10 @@ public class Mensagens extends ComandosPadrao {
 			assunto.click();
 			assunto.sendKeys("Brasil");
 
+			// Não está escrevendo
 			WebElement conteudo = navegador.findElement(By.id("cke_1_contents"));
 			conteudo.click();
+			Thread.sleep(1000);
 			conteudo.sendKeys(
 					"A História do Brasil começa com a chegada dos primeiros humanos no continente americano há mais de 8.000 anos.");
 
@@ -154,11 +182,39 @@ public class Mensagens extends ComandosPadrao {
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
 
+			WebElement data = navegador.findElement(By.name("validity"));
+			data.click();
+			data.clear();
+			data.sendKeys("31/12/2018");
+
+			WebElement assunto = navegador.findElement(By.name("subject"));
+			assunto.click();
+			assunto.sendKeys("Formatura");
+
+			// Escrever texto
+
 		} else if (tipoEnvio == "enquete") {
 
 			SelecioneTipoDeMensagem.click();
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
+			
+			WebElement assunto = navegador.findElement(By.name("subject"));
+			assunto.click();
+			assunto.sendKeys("Tema");
+			
+			WebElement opcao1 = navegador.findElement(By.name("status_option1"));
+			opcao1.click();
+			opcao1.sendKeys("Opção 1");
+			WebElement opcao2 = navegador.findElement(By.name("status_option2"));
+			opcao2.click();
+			opcao2.sendKeys("Opção 2");
+			WebElement opcao3 = navegador.findElement(By.name("status_option3"));
+			opcao3.click();
+			opcao3.sendKeys("Opção 3");
+			WebElement opcao4 = navegador.findElement(By.name("status_option4"));
+			opcao4.click();
+			opcao4.sendKeys("Opção 4");
 
 		}
 
