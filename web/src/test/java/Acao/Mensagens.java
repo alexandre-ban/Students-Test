@@ -5,8 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
 import Suporte.ComandosPadrao;
 
 public class Mensagens extends ComandosPadrao {
@@ -125,22 +123,27 @@ public class Mensagens extends ComandosPadrao {
 		tipoMensagem.click();
 		Thread.sleep(1000);
 
-		if (tipoEnvio == "autorização") {
+		if (tipoEnvio == "mensagem") {
 
 			SelecioneTipoDeMensagem.click();
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
 
-			WebElement data = navegador.findElement(By.name("validity"));
-			data.click();
-			data.clear();
-			data.sendKeys("31/12/2018");
-
 			WebElement assunto = navegador.findElement(By.name("subject"));
 			assunto.click();
-			assunto.sendKeys("Excursão");
+			assunto.sendKeys("Brasil");
 
-			// Escrever texto
+			// Não está escrevendo
+			WebElement conteudo = navegador.findElement(By.id("cke_1_contents"));
+			conteudo.click();
+			//Thread.sleep(5000);
+			
+			WebElement gambi = navegador.findElement(By.xpath("//div[@id=\"cke_1_contents\"]/iframe"));
+			gambi.click();
+			
+			Thread.sleep(5000);
+			gambi.sendKeys(
+					"A História do Brasil começa com a chegada dos primeiros humanos no continente americano há mais de 8.000 anos.");
 
 		} else if (tipoEnvio == "notificação") {
 
@@ -159,22 +162,22 @@ public class Mensagens extends ComandosPadrao {
 
 			// Escrever texto
 
-		} else if (tipoEnvio == "mensagem") {
+		} else if (tipoEnvio == "autorização") {
 
 			SelecioneTipoDeMensagem.click();
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
 
+			WebElement data = navegador.findElement(By.name("validity"));
+			data.click();
+			data.clear();
+			data.sendKeys("31/12/2018");
+
 			WebElement assunto = navegador.findElement(By.name("subject"));
 			assunto.click();
-			assunto.sendKeys("Brasil");
+			assunto.sendKeys("Excursão");
 
-			// Não está escrevendo
-			WebElement conteudo = navegador.findElement(By.id("cke_1_contents"));
-			conteudo.click();
-			Thread.sleep(1000);
-			conteudo.sendKeys(
-					"A História do Brasil começa com a chegada dos primeiros humanos no continente americano há mais de 8.000 anos.");
+			// Escrever texto
 
 		} else if (tipoEnvio == "convite") {
 
@@ -275,7 +278,7 @@ public class Mensagens extends ComandosPadrao {
 			System.out.println("A(s) mensagen(s) foi(ram) marcada(s) como não lida(s)");
 		} else {
 			marcarComoLidoNaoLido.click();
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 			navegador.findElement(By.xpath("//div[@id=\"modal-confirm\"]/div/div/div/button")).click();
 		}
 		return this;

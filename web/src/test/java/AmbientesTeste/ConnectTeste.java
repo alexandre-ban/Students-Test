@@ -10,28 +10,36 @@ import Suporte.Navegador;
 
 public class ConnectTeste {
 	private WebDriver navegador;
-	
+
 	@Before
 	public void setUp() {
 
 		navegador = Navegador.createChrome();
 	}
 
-	
-	//@Test
+	// @Test
 	public void testCriacaoDePost() throws InterruptedException {
 
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoPost()
-		.publicarTexto();		
+		.publicarTexto();
 	}
-	
-	@Test
+
+	//@Test
 	public void testEnviarMensagens() throws InterruptedException {
-		
+
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoMensagem()
-		.criarMensagem("enquete");
+		.criarMensagem("mensagem");
+	}
+
+	@Test
+	public void testCalendario() throws InterruptedException {
+		
+		new Login(navegador).fazerLogin("diretor", "quality")
+		.acaoCalendario()
+		.lerMais("s");
+		
 	}
 
 	@After

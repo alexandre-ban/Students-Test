@@ -10,8 +10,8 @@ public class Navegador {
 	public static WebDriver createChrome() {
 
 		// Abrindo o navegador
-		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\alexandre.lima\\Drivers\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ban\\Desktop\\Repositorio\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\alexandre.lima\\Drivers\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ban\\Desktop\\Repositorio\\Drivers\\chromedriver.exe");
 		WebDriver navegador = new ChromeDriver();
 		navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		navegador.manage().window().maximize();
