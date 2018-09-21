@@ -17,6 +17,7 @@ public class ConnectTeste {
 		navegador = Navegador.createChrome();
 	}
 
+	
 	//@Test
 	public void testCriacaoDePost() throws InterruptedException {
 
