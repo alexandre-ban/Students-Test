@@ -198,11 +198,11 @@ public class Mensagens extends ComandosPadrao {
 			SelecioneTipoDeMensagem.click();
 			SelecioneTipoDeMensagem.sendKeys(tipoEnvio);
 			SelecioneTipoDeMensagem.sendKeys(Keys.ENTER);
-			
+
 			WebElement assunto = navegador.findElement(By.name("subject"));
 			assunto.click();
 			assunto.sendKeys("Tema");
-			
+
 			WebElement opcao1 = navegador.findElement(By.name("status_option1"));
 			opcao1.click();
 			opcao1.sendKeys("Opção 1");
@@ -215,6 +215,8 @@ public class Mensagens extends ComandosPadrao {
 			WebElement opcao4 = navegador.findElement(By.name("status_option4"));
 			opcao4.click();
 			opcao4.sendKeys("Opção 4");
+
+			// Escrever texto
 
 		}
 
