@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import Acao.Calendario;
 import Acao.Mensagens;
 import Acao.Post;
+import Acao.Provas;
 import Suporte.ComandosPadrao;
 
 public class Home extends ComandosPadrao {
@@ -41,5 +42,14 @@ public class Home extends ComandosPadrao {
 		Thread.sleep(1000);
 
 		return new Calendario(navegador);
+	}
+	
+	public Provas acaoProva() {
+		
+		WebElement menuProvas = navegador.findElement(By.xpath("//nav[@id='sidebar']/ul/li[5]/a/span"));
+		menuProvas.click();
+		
+		return new Provas (navegador);
+		
 	}
 }

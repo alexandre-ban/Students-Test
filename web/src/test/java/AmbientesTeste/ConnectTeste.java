@@ -18,7 +18,7 @@ public class ConnectTeste {
 	}
 
 	// @Test
-	public void testCriacaoDePost() throws InterruptedException {
+	public void testHomeCriacaoDePost() throws InterruptedException {
 
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoPost()
@@ -26,7 +26,7 @@ public class ConnectTeste {
 	}
 
 	//@Test
-	public void testEnviarMensagens() throws InterruptedException {
+	public void testMensagens() throws InterruptedException {
 
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoMensagem()
@@ -38,8 +38,16 @@ public class ConnectTeste {
 		
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoCalendario()
-		.lerMais("s");
+		.novoEvento()
+		.excluir();		
+	}
+	
+	//@Test
+	public void testProvas() throws InterruptedException {
 		
+		new Login(navegador).fazerLogin("diretor", "quality")
+		.acaoProva()
+		.criarProvas();
 	}
 
 	@After

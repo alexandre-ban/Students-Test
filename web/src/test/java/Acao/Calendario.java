@@ -86,7 +86,7 @@ public class Calendario extends ComandosPadrao {
 				.findElement(By.xpath("//div[@id='event-calendar']/div[3]/div[2]/form/div[2]/div/div/div/ul/li/a/span"))
 				.click();
 		notificar.click();
-		
+
 		navegador.findElement(By.xpath("//div[@id='event-calendar']/div[3]/div[2]/form/div[3]/button")).click();
 
 		return this;
@@ -95,15 +95,36 @@ public class Calendario extends ComandosPadrao {
 	public Calendario lerMais(String pesquisa) {
 
 		navegador.findElement(By.xpath("//div[6]/a")).click();
-		
+
+		// Validar pesquisa com o Anderson
 		if (pesquisa == "s") {
-			
-			WebElement pesquisar = navegador.findElement(By.xpath("//div[@id='table-event-list-grid_filter']/label/input"));
-			pesquisar.click();
+
+			WebElement pesquisar = navegador
+					.findElement(By.xpath("//div[@id='table-event-list-grid_filter']/label/input"));
+			executor.executeScript("arguments[0].click();", pesquisar);
 			pesquisar.sendKeys("trabalhador");
 		}
-		
 
+		return this;
+	}
+
+	public Calendario excluir() throws InterruptedException {
+
+		// O método funciona
+		// Mas o código deve ser melhorado
+
+		Thread.sleep(1000);
+
+		WebElement btnOUT = navegador.findElement(By.id("fc-next-display"));
+		btnOUT.click();
+		WebElement btnNOV = navegador.findElement(By.id("fc-next-display"));
+		btnNOV.click();
+		WebElement btnDEZ = navegador.findElement(By.id("fc-next-display"));
+		btnDEZ.click();
+
+		navegador.findElement(By.xpath("//a/div")).click();
+		navegador.findElement(By.xpath("//div/a/span[2]")).click();
+		navegador.findElement(By.xpath("//div[@id='modal-confirm-remodal-content']/div/div[2]/form/button")).click();
 		return this;
 	}
 
