@@ -50,15 +50,26 @@ public class Provas extends ComandosPadrao {
 		} else if (questao == "dissertativa") {
 
 			navegador.findElement(By.xpath("//a[2]")).click();
-			
+
+			/*
+			 * Thread.sleep(1000); WebElement anexo = navegador.findElement( By.
+			 * xpath("(.//*[normalize-space(text()) and normalize-space(.)='Anexo'])[1]/following::div[2]"
+			 * )); Thread.sleep(1000); anexo.click();
+			 * anexo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
+			 */
+
+			WebElement enunciado = navegador.findElement(By.xpath("//form[@id='question-form']/div[3]/div/textarea"));
+			enunciado.click();
+			enunciado.sendKeys("Prova Automação");
+
+			WebElement valor = navegador.findElement(By.name("field_grade"));
+			valor.click();
+			valor.sendKeys("10");
+
 			Thread.sleep(1000);
-			WebElement anexo = navegador.findElement(
-					By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Anexo'])[1]/following::div[2]"));			
-			Thread.sleep(1000);
+			navegador.findElement(By.xpath("//div[4]/button")).click();
 			
-	//		anexo.click();	
-			
-			anexo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
+			navegador.findElement(By.name("Save")).click();
 		}
 
 		return this;
