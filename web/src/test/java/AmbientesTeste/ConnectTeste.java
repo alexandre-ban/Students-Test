@@ -33,7 +33,7 @@ public class ConnectTeste {
 		.criarMensagem("mensagem");
 	}
 
-	@Test
+	//@Test
 	public void testCalendario() throws InterruptedException {
 		
 		new Login(navegador).fazerLogin("diretor", "quality")
@@ -42,12 +42,12 @@ public class ConnectTeste {
 		.excluir();		
 	}
 	
-	//@Test
+	@Test
 	public void testProvas() throws InterruptedException {
 		
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoProva()
-		.criarProvas();
+		.criarProvas("Rolim", "0 - 10", "10:10:10");
 	}
 
 	@After
