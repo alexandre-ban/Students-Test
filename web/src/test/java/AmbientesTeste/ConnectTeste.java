@@ -47,7 +47,7 @@ public class ConnectTeste {
 		
 		new Login(navegador).fazerLogin("diretor", "quality")
 		.acaoProva()
-		.criarProvas("Rolim", "0 - 10", "10:10:10");
+		.criarProvas("Rolim", "0 - 10", "10:10:10" , "dissertativa");
 	}
 
 	@After
