@@ -43,16 +43,25 @@ public class Provas extends ComandosPadrao {
 		return this;
 	}
 
-	public Provas adicionarQuestao(String questao) {
+	public Provas adicionarQuestao(String questao) throws InterruptedException {
 
 		if (questao == "alternativa") {
 
 		} else if (questao == "dissertativa") {
-			
+
 			navegador.findElement(By.xpath("//a[2]")).click();
+			
+			Thread.sleep(1000);
+			WebElement anexo = navegador.findElement(
+					By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Anexo'])[1]/following::div[2]"));			
+			Thread.sleep(1000);
+			
+	//		anexo.click();	
+			
+			anexo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
 		}
 
-		return this;	
+		return this;
 	}
 
 }
