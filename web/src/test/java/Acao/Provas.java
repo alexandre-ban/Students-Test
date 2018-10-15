@@ -1,5 +1,7 @@
 package Acao;
 
+import static org.junit.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -7,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import Suporte.ComandosPadrao;
+import net.bytebuddy.asm.Advice.Argument;
 
 public class Provas extends ComandosPadrao {
 
@@ -51,12 +54,12 @@ public class Provas extends ComandosPadrao {
 
 			navegador.findElement(By.xpath("//a[2]")).click();
 
-			/*
-			 * Thread.sleep(1000); WebElement anexo = navegador.findElement( By.
-			 * xpath("(.//*[normalize-space(text()) and normalize-space(.)='Anexo'])[1]/following::div[2]"
-			 * )); Thread.sleep(1000); anexo.click();
-			 * anexo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
-			 */
+//			Thread.sleep(1000);
+//			WebElement anexo = navegador.findElement(
+//					By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Anexo'])[1]/following::div[2]"));
+//			Thread.sleep(1000);
+//			anexo.click();
+//			anexo.sendKeys("C:\\Users\\alexandre.lima\\Desktop\\Automacao\\pascoa.jpg");
 
 			WebElement enunciado = navegador.findElement(By.xpath("//form[@id='question-form']/div[3]/div/textarea"));
 			enunciado.click();
@@ -68,10 +71,24 @@ public class Provas extends ComandosPadrao {
 
 			Thread.sleep(1000);
 			navegador.findElement(By.xpath("//div[4]/button")).click();
-			
+
 			navegador.findElement(By.name("Save")).click();
 		}
 
+		return this;
+	}
+
+	public Provas excluirProva() {
+		
+		WebElement excluir = navegador.findElement(By.xpath("//table[@id='dt-scales']/tbody/tr/td[4]/div/a[3]/i"));
+		executor.executeScript("arguments[0].click();", excluir);
+		
+		navegador.findElement(By.xpath("//div[@id='modal-confirm-remodal-content']/div/div[2]/form/button")).click();
+		
+		WebElement questionarioDeletado = navegador.findElement(By.xpath("//div[@id='messages-container']/div"));
+		String validacao = questionarioDeletado.getText();
+		assertEquals("×" + "\n" + "Questionário deletado", validacao);
+		
 		return this;
 	}
 
